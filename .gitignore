@@ -219,3 +219,11 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 ### hi its sibirnan
+
+# Generated intermediate datasets
+data/interim/
+
+
+# Generated datasets
+data/interim/
+data/processed/
