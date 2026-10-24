@@ -1,0 +1,11 @@
+{
+  "status": "provisional",
+  "input_time_index": 58,
+  "representation": "Messwerte eines einzelnen Eingabetages",
+  "model_1A": "X_without_lst",
+  "model_1B": "X_with_lst",
+  "model_2A": "X_with_lst",
+  "row_identifier": "sample_id ist Index, kein Eingabemerkmal",
+  "preprocessing": "Noch keine Imputation oder Skalierung",
+  "target_day_assumption": "Letzte Zeile, time_idx 59"
+}

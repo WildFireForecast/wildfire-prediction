@@ -1,0 +1,13 @@
+{
+  "status": "provisional",
+  "target_day_assumption": "Letzte Zeile, time_idx 59",
+  "verification": "Zeitbezug der 60-Tage-Version noch zu bestätigen",
+  "sklearn_version": "1.9.1",
+  "training_years": "2006–2019",
+  "validation_year": 2020,
+  "test_used": false,
+  "threshold": 0.5,
+  "C": 1.0,
+  "imputation": "Trainingsmedian pro Merkmal, beide Klassen gemeinsam",
+  "scaling": "StandardScaler, ausschliesslich auf Training angepasst"
+}

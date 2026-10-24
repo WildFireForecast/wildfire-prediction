@@ -227,3 +227,5 @@ data/interim/
 # Generated datasets
 data/interim/
 data/processed/
+# macOS
+.DS_Store
