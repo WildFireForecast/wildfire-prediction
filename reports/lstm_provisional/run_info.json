@@ -1,0 +1,17 @@
+{
+  "status": "provisional",
+  "target_day_assumption": "Letzte Zeile, time_idx 59",
+  "verification": "Zeitbezug der 60-Tage-Version noch zu bestätigen",
+  "torch_version": "2.15.0+cpu",
+  "sklearn_version": "1.9.1",
+  "training_years": "2006–2019",
+  "validation_year": 2020,
+  "test_used": false,
+  "sequence_length_days": 59,
+  "hidden_size": 64,
+  "epochs": 15,
+  "learning_rate": 0.001,
+  "threshold": 0.5,
+  "imputation": "Trainingsmedian pro Merkmal über alle Trainingstage",
+  "scaling": "StandardScaler, ausschliesslich auf Training angepasst"
+}
