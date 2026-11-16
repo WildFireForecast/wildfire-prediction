@@ -27,7 +27,7 @@ from sklearn.preprocessing import StandardScaler
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "data" / "processed" / "provisional" / "baseline"
 MODELS = ROOT / "models" / "provisional"
-REPORTS = ROOT / "reports" / "logistic_provisional"
+REPORTS = ROOT / "reports" / "logistic_regression/baseline"
 
 MODELS.mkdir(parents=True, exist_ok=True)
 REPORTS.mkdir(parents=True, exist_ok=True)
@@ -169,6 +169,6 @@ run_info = {
 
 print("\n--- VORLÄUFIGE ERGEBNISSE: VALIDIERUNG 2020 ---")
 print(summary.round(4).to_string())
-print("\nModelle: models/provisional/")
-print("Ergebnisse: reports/logistic_provisional/")
+print("\nModelle: models/logistic_regression/baseline/")
+print("Ergebnisse: reports/logistic_regression/baseline/")
 print("Testdaten wurden nicht verwendet.")

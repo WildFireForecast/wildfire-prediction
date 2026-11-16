@@ -33,8 +33,8 @@ torch.manual_seed(SEED)
 # Wichtig: Da wir nun in src/models/lstm/ liegen, müssen wir 3 Ebenen hoch, um zum Projekt-Root zu kommen.
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "data" / "processed" / "provisional"
-MODELS = ROOT / "models" / "provisional"
-REPORTS = ROOT / "reports" / "lstm_provisional"
+MODELS = ROOT / "models" / "lstm" / "baseline"
+REPORTS = ROOT / "reports" / "lstm/baseline"
 
 MODELS.mkdir(parents=True, exist_ok=True)
 REPORTS.mkdir(parents=True, exist_ok=True)
@@ -241,6 +241,6 @@ print("\n========================================")
 print(" VORLÄUFIGE ERGEBNISSE: VALIDIERUNG 2020")
 print("========================================")
 print(summary.round(4).to_string())
-print("\nModelle gespeichert in: models/provisional/")
-print("Berichte gespeichert in: reports/lstm_provisional/")
+print("\nModelle gespeichert in: models/lstm/baseline/")
+print("Berichte gespeichert in: reports/lstm/baseline/")
 print("Testdaten (2021-2022) wurden unangetastet gelassen.")

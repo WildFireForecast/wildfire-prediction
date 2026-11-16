@@ -14,11 +14,11 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[3]
 
-MODEL_FILE = ROOT / "models/provisional/xgboost_2A.joblib"
+MODEL_FILE = ROOT / "models/xgboost/baseline/xgboost_2A.joblib"
 CONFIG_FILE = (
     ROOT / "data/processed/provisional/input_config.json"
 )
-REPORTS = ROOT / "reports/xgboost_provisional"
+REPORTS = ROOT / "reports/xgboost/baseline_2A"
 
 REPORTS.mkdir(parents=True, exist_ok=True)
 

@@ -26,8 +26,8 @@ from sklearn.metrics import (
 ROOT = Path(__file__).resolve().parents[3]
 
 DATA = ROOT / "data/processed/provisional/baseline"
-MODELS = ROOT / "models/provisional"
-REPORTS = ROOT / "reports/xgboost_provisional"
+MODELS = ROOT / "models/xgboost/baseline"
+REPORTS = ROOT / "reports/xgboost/baseline_2A"
 
 MODELS.mkdir(parents=True, exist_ok=True)
 REPORTS.mkdir(parents=True, exist_ok=True)
