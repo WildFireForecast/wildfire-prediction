@@ -1,0 +1,20 @@
+{
+  "model": "2B",
+  "status": "provisional",
+  "selection_metric": "roc_auc",
+  "best_roc_auc_validation": 0.937293099057805,
+  "best_parameters": {
+    "subsample": 0.8,
+    "n_estimators": 300,
+    "min_child_weight": 5,
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "colsample_bytree": 1.0
+  },
+  "search_iterations": 20,
+  "random_state": 42,
+  "training_years": "2006-2019",
+  "validation_year": 2020,
+  "target_day_assumption": "time_idx=59 (unverified)",
+  "test_used": false
+}
