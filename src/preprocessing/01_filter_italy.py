@@ -9,7 +9,7 @@ import pandas as pd
 
 
 # Projektordner unabhängig vom aktuellen Terminal-Verzeichnis finden.
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "data" / "raw"
 OUT = ROOT / "data" / "interim"
 BORDERS = RAW / "boundaries"

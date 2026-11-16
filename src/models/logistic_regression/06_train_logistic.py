@@ -24,7 +24,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "data" / "processed" / "provisional" / "baseline"
 MODELS = ROOT / "models" / "provisional"
 REPORTS = ROOT / "reports" / "logistic_provisional"

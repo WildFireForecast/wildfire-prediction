@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data" / "processed" / "provisional"
 OUT = DATA / "baseline"
 OUT.mkdir(parents=True, exist_ok=True)
