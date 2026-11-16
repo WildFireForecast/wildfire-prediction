@@ -55,20 +55,24 @@ Die genaue zeitliche Zuordnung zum Waldbrandereignis muss noch abschliessend bes
 
 Samples, deren Zeitreihen eine Grenze zwischen diesen Zeiträumen überschreiten, wurden ausgeschlossen.
 
-## 3. Bisherige Modelle
+## 3. Machine-Learning-Modelle
 
-### Modell 1 – Logistische Regression
+Im Projekt WildFireForecast werden drei Modellfamilien mit insgesamt sechs
+Modellvarianten untersucht. Die Entwicklung und vorläufige Bewertung
+erfolgen auf einer gemeinsamen Datengrundlage für Italien.
 
-Wir haben zwei Varianten der logistischen Regression entwickelt:
+### 3.1 Logistische Regression
 
 - **Modell 1A:** Ohne die Oberflächentemperaturvariablen `lst_day` und `lst_night`.
-- **Modell 1B:** Mit diesen beiden Variablen.
+- **Modell 1B:** Mit beiden Oberflächentemperaturvariablen.
 
-Fehlende Eingabewerte werden mit dem Median der Trainingsdaten ersetzt. Anschliessend werden die Merkmale standardisiert.
+Die Modelle verwenden eine scikit-learn-Pipeline mit Imputation
+fehlender Werte und Standardisierung der Eingabemerkmale.
 
-Die Vorverarbeitung und das Modell sind in einer gemeinsamen scikit-learn-Pipeline implementiert.
+Die bisherigen Validierungsergebnisse aus dem Jahr 2020 sind
+vorläufig und werden im wissenschaftlichen Projektbericht dokumentiert.
 
-### Validierungsergebnisse 2020
+#### Validierungsergebnisse 2020
 
 | Kennzahl | Modell 1A | Modell 1B |
 |---|---:|---:|
@@ -82,29 +86,108 @@ Modell 1B erreicht bei gleichem Recall eine leicht bessere Precision und verursa
 
 Diese Ergebnisse stammen ausschliesslich aus der Validierung. Die abschliessende Testauswertung wurde noch nicht durchgeführt.
 
-## 4. Aktuelle Python-Skripte
+### 3.2 XGBoost
 
-Die aktuelle Verarbeitung befindet sich im Ordner `src/`.
+- **Modell 2A:** XGBoost ohne zusätzliches Feature Engineering.
+- **Modell 2B:** XGBoost mit zusätzlichem Feature Engineering.
 
-| Datei | Funktion |
-|---|---|
-| `01_filter_italy.py` | Geografische Eingrenzung auf Italien |
-| `02_check_data.py` | Datenprüfung |
-| `03_split_samples.py` | Zeitliche Aufteilung |
-| `04_prepare_inputs.py` | Aufbereitung der Eingabezeitreihen |
-| `05_build_baseline_tables.py` | Erstellung der Modelltabellen |
-| `06_train_logistic.py` | Training und Validierung von Modell 1 |
-| `07_check_target_day.py` | Prüfung der Brandinformationen über die Zeit |
-| `08_check_labels.py` | Überprüfung der Zielvariablen |
-| `09_check_label_over_time.py` | Prüfung der zeitlichen Konstanz der Kennzeichnung |
+Für beide Modellvarianten wurden Baseline-Modelle trainiert,
+validiert und anschliessend Hyperparameter-Tuning durchgeführt.
+
+Die gespeicherten Baseline- und Tuning-Modelle befinden sich
+in getrennten Unterordnern.
+
+### 3.3 Long Short-Term Memory (LSTM)
+
+- **Modell 3A:** LSTM ohne die Merkmale `lst_day` und `lst_night`.
+- **Modell 3B:** LSTM mit diesen beiden Merkmalen.
+
+Die LSTM-Modelle verarbeiten Eingabesequenzen mit 59 Zeitschritten.
+Die trainierten Modellgewichte und zugehörigen Preprocessing-Objekte
+werden gemeinsam gespeichert.
+
+Auch für die LSTM-Modelle wurde Hyperparameter-Tuning durchgeführt.
+Die zugehörigen Ergebnisse werden unter `reports/lstm/tuning/` abgelegt.
+
+### 3.4 Methodische Einschränkungen
+
+Das bisherige Eingabefenster umfasst `time_idx=0–58` (59 Tage).
+Die Annahme, dass `time_idx=59` den vorherzusagenden Zieltag
+repräsentiert, ist noch nicht abschliessend wissenschaftlich verifiziert.
+
+Die Testdaten der Jahre 2021–2022 wurden für die bisherigen
+Modellvergleiche nicht verwendet. Die Ergebnisse beziehen sich
+auf die Validierungsdaten des Jahres 2020.
+
+## 4. Projektstruktur
+
+```text
+WildFireForecast/
+├── data/
+│   ├── raw/
+│   ├── interim/
+│   ├── processed/
+│   └── reference/
+├── src/
+│   ├── preprocessing/
+│   ├── validation_checks/
+│   └── models/
+│       ├── logistic_regression/
+│       ├── xgboost/
+│       │   └── tuning/
+│       └── lstm/
+│           └── tuning/
+├── models/
+│   ├── logistic_regression/
+│   │   └── baseline/
+│   ├── xgboost/
+│   │   ├── baseline/
+│   │   └── tuned/
+│   └── lstm/
+│       └── baseline/
+├── reports/
+│   ├── logistic_regression/
+│   │   └── baseline/
+│   ├── xgboost/
+│   │   ├── baseline_2A/
+│   │   ├── baseline_2B/
+│   │   └── tuning/
+│   └── lstm/
+│       ├── baseline/
+│       └── tuning/
+├── docs/
+│   └── WildFireForecast_Projektbericht.docx
+├── README.md
+└── requirements.txt
+```
+
+Die Verzeichnisse sind nach ihrer Funktion gegliedert:
+
+- `data/`: Originaldaten, Zwischenstände und vorbereitete Datensätze.
+- `src/preprocessing/`: Datenfilterung und Aufbereitung.
+- `src/validation_checks/`: Prüfungen der Daten und Zielvariablen.
+- `src/models/`: Training, Analyse und Hyperparameter-Tuning.
+- `models/`: Gespeicherte Modelle und Preprocessing-Objekte.
+- `reports/`: Validierungskennzahlen, Grafiken und Tuning-Ergebnisse.
+- `docs/`: Wissenschaftlicher Projektbericht.
 
 ## 5. Projektstatus
 
-**Abgeschlossen:** Datenfilterung für Italien, zeitliche Datenaufteilung, erste Datenqualitätsprüfungen, Training und Validierung der logistischen Regression.
+Folgende Arbeiten wurden bereits durchgeführt:
 
-**Noch offen:** Abschliessende Prüfung des Zielzeitpunkts, weitere vier ML-Modelle, Modellvergleich, Testevaluation und Schlussfolgerungen.
+- Geografische Eingrenzung auf Italien.
+- Datenbereinigung und zeitliche Aufteilung.
+- Entwicklung und Validierung der logistischen Regressionsmodelle 1A und 1B.
+- Entwicklung und Validierung der XGBoost-Modelle 2A und 2B.
+- Entwicklung und Validierung der LSTM-Modelle 3A und 3B.
+- Hyperparameter-Tuning für XGBoost und LSTM.
+- Umstrukturierung der Modell- und Ergebnisordner.
+- Prüfung der gespeicherten Modellartefakte auf Ladefähigkeit.
 
-Die derzeitigen Modellergebnisse sind als vorläufig gekennzeichnet.
+Noch ausstehend sind insbesondere die abschliessende Prüfung
+der zeitlichen Zielzuordnung, die finale Modellevaluation
+auf dem zurückgehaltenen Testdatensatz und die wissenschaftliche
+Gesamtinterpretation der Ergebnisse.
 
 ## 6. Projektdokumentation
 

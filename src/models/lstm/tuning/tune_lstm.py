@@ -23,7 +23,7 @@ torch.manual_seed(SEED)
 # Pfade anpassen (4 Ebenen hoch zum Projekt-Root)
 ROOT = Path(__file__).resolve().parents[4]
 DATA = ROOT / "data" / "processed" / "provisional"
-REPORTS = ROOT / "reports" / "tuning_lstm"
+REPORTS = ROOT / "reports" / "lstm/tuning"
 REPORTS.mkdir(parents=True, exist_ok=True)
 
 config = json.loads((DATA / "input_config.json").read_text(encoding="utf-8"))
@@ -138,4 +138,4 @@ print("\n========================================")
 print(" TUNING FÜR 3A & 3B ABGESCHLOSSEN")
 print("========================================")
 print(summary_df.to_string(index=False))
-print(f"\nGespeichert unter: reports/tuning_lstm/tuning_summary.csv")
+print(f"\nGespeichert unter: reports/lstm/tuning/tuning_summary.csv")

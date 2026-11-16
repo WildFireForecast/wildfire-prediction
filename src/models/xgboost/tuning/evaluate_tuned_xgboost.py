@@ -26,8 +26,8 @@ DATA = ROOT / "data/processed/provisional"
 BASELINE = DATA / "baseline"
 FEATURE_2B = DATA / "xgboost_2B"
 
-MODELS = ROOT / "models/tuned"
-REPORTS = ROOT / "reports/tuning_xgboost"
+MODELS = ROOT / "models/xgboost/tuned"
+REPORTS = ROOT / "reports/xgboost/tuning"
 
 REPORTS.mkdir(parents=True, exist_ok=True)
 
@@ -169,12 +169,12 @@ tuned.to_csv(
 
 # Bisherige Ergebnisse laden
 original_2A = pd.read_csv(
-    ROOT / "reports/xgboost_provisional/validation_metrics.csv"
+    ROOT / "reports/xgboost/baseline_2A/validation_metrics.csv"
 )
 original_2A["version"] = "baseline"
 
 original_2B = pd.read_csv(
-    ROOT / "reports/xgboost_2B_provisional/validation_metrics.csv"
+    ROOT / "reports/xgboost/baseline_2B/validation_metrics.csv"
 )
 original_2B["version"] = "baseline"
 

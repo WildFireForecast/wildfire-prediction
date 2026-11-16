@@ -14,12 +14,12 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[3]
 
-MODEL_FILE = ROOT / "models/provisional/xgboost_2B.joblib"
+MODEL_FILE = ROOT / "models/xgboost/baseline/xgboost_2B.joblib"
 CONFIG_FILE = (
     ROOT / "data/processed/provisional/xgboost_2B/feature_config.json"
 )
 
-REPORTS = ROOT / "reports/xgboost_2B_provisional"
+REPORTS = ROOT / "reports/xgboost/baseline_2B"
 REPORTS.mkdir(parents=True, exist_ok=True)
 
 # ==========================================
@@ -191,7 +191,7 @@ plt.close()
 # ==========================================
 
 importance_2A = pd.read_csv(
-    ROOT / "reports/xgboost_provisional/2A_feature_importance.csv"
+    ROOT / "reports/xgboost/baseline_2A/2A_feature_importance.csv"
 )
 
 comparison = df.merge(

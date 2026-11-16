@@ -29,8 +29,8 @@ DATA = ROOT / "data/processed/provisional"
 FEATURE_DATA = DATA / "xgboost_2B"
 BASELINE = DATA / "baseline"
 
-MODELS = ROOT / "models/provisional"
-REPORTS = ROOT / "reports/xgboost_2B_provisional"
+MODELS = ROOT / "models/xgboost/baseline"
+REPORTS = ROOT / "reports/xgboost/baseline_2B"
 
 MODELS.mkdir(parents=True, exist_ok=True)
 REPORTS.mkdir(parents=True, exist_ok=True)
@@ -229,7 +229,7 @@ run_info = {
 # ==========================================
 
 metrics_2A = pd.read_csv(
-    ROOT / "reports/xgboost_provisional/validation_metrics.csv",
+    ROOT / "reports/xgboost/baseline_2A/validation_metrics.csv",
     index_col="model",
 )
 

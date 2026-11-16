@@ -20,8 +20,8 @@ DATA = ROOT / "data/processed/provisional"
 BASELINE = DATA / "baseline"
 FEATURE_2B = DATA / "xgboost_2B"
 
-MODELS = ROOT / "models/tuned"
-REPORTS = ROOT / "reports/tuning_xgboost"
+MODELS = ROOT / "models/xgboost/tuned"
+REPORTS = ROOT / "reports/xgboost/tuning"
 
 MODELS.mkdir(parents=True, exist_ok=True)
 REPORTS.mkdir(parents=True, exist_ok=True)
