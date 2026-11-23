@@ -1,0 +1,16 @@
+{
+  "model": "4B",
+  "best_run": 1,
+  "best_validation_roc_auc": 0.9404443595620066,
+  "parameters": {
+    "d_model": 32,
+    "nhead": 4,
+    "num_layers": 1,
+    "lr": 0.001,
+    "batch_size": 64
+  },
+  "epochs": 15,
+  "target_day_assumption": "Letzte Zeile, time_idx 59",
+  "status": "provisional",
+  "test_used": false
+}
