@@ -1,0 +1,26 @@
+{
+  "3A": {
+    "variant": "without_lst",
+    "best_params": {
+      "hidden_size": 64,
+      "lr": 0.0005,
+      "batch_size": 32,
+      "epochs": 15
+    },
+    "validation_roc_auc": 0.9491023682200153,
+    "model_file": "models\\lstm\\tuned\\lstm_3A_tuned.pt",
+    "preprocessing_file": "models\\lstm\\tuned\\lstm_3A_tuned_preprocessing.joblib"
+  },
+  "3B": {
+    "variant": "with_lst",
+    "best_params": {
+      "hidden_size": 128,
+      "lr": 0.001,
+      "batch_size": 64,
+      "epochs": 15
+    },
+    "validation_roc_auc": 0.9458237840590782,
+    "model_file": "models\\lstm\\tuned\\lstm_3B_tuned.pt",
+    "preprocessing_file": "models\\lstm\\tuned\\lstm_3B_tuned_preprocessing.joblib"
+  }
+}
